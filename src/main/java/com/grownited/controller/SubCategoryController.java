@@ -1,6 +1,8 @@
 package com.grownited.controller;
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,12 +11,15 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.grownited.bean.SubCategoryBean;
 import com.grownited.dao.CategoryDao;
+import com.grownited.dao.SubCategoryDao;
 
 @Controller
 public class SubCategoryController {
 
 	@Autowired
 	CategoryDao categoryDao;
+	@Autowired
+	SubCategoryDao  subCategoryDao;
 
 	@GetMapping("/newsubcategory")
 	public String newSubCategory(Model model) {
@@ -31,11 +36,22 @@ public class SubCategoryController {
 		
 		//dao 
 		//insert 
+		subCategoryDao.addSubCategory(subCategoryBean);
+		return "redirect:/listsubcategory";
 		
-		return "redirect:/listcategories";
+		
+	
 	}
 
 	//listsubcategory 
+	
+	@GetMapping("/listsubcategory")
+	public String listSubCategory(Model model) {
+		List<SubCategoryBean> listSubCategory = subCategoryDao.getAllSubCategory();
+		model.addAttribute("listSubCategory", listSubCategory);
+		return "ListSubCategory";
+	}
+	
 }
 
 

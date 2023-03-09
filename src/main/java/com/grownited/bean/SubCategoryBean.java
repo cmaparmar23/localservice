@@ -8,11 +8,18 @@ public class SubCategoryBean {
  Integer subCategoryId,categoryId;
 String subCategoryName;
 boolean deleted;
+String categoryName;
 public Integer getSubCategoryId() {
 	return subCategoryId;
 }
 public void setSubCategoryId(Integer subCategoryId) {
 	this.subCategoryId = subCategoryId;
+}
+public String getCategoryName() {
+	return categoryName;
+}
+public void setCategoryName(String categoryName) {
+	this.categoryName = categoryName;
 }
 public Integer getCategoryId() {
 	return categoryId;

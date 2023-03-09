@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
@@ -11,6 +12,11 @@
 <a href="newcategory">Add new Category</a>
 <br>
 <a href="listcategories">List Category</a>
+<br>
+<a href="newsubcategory">New Subcategory</a>
+
+<br>
+<a href="logout">Logout</a>
 </body>
 
 </html>
