@@ -3,6 +3,8 @@
 
 package com.grownited.dao;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 
@@ -10,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.grownited.bean.UserBean;
+import com.grownited.bean.CategoryBean;
 import com.grownited.bean.ForgetPasswordBean;
 import com.grownited.bean.LoginBean;
 import com.grownited.bean.UpdatePasswordBean;
@@ -83,6 +86,16 @@ return null;
 		
 	}
 
-}
+	public List<UserBean> getAllUser() {
 
-	
+		String selectQuery = "select * from users ";
+
+		List<UserBean> listUser = stmt.query(selectQuery, new BeanPropertyRowMapper<UserBean>(UserBean.class));
+		
+		//c1 c2 c3 
+		
+		return listUser;
+
+
+	}
+}

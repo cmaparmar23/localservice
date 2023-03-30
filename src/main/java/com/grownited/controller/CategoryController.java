@@ -2,6 +2,7 @@ package com.grownited.controller;
 
 import java.util.List;
 
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.Cookie;
 
@@ -76,8 +77,6 @@ public class CategoryController {
 	@GetMapping("/listcategories")
 	public String listCategories(Model model)
 	{
-
-		//pull all category from db tabel
 List<CategoryBean> list = categoryDao.getAllCategory();
 		model.addAttribute("list",list);
 		return "ListCategory";

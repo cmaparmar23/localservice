@@ -1,6 +1,8 @@
 package com.grownited.controller;
 
 
+import java.util.List;
+
 import javax.servlet.http.Cookie;
 
 import javax.servlet.http.HttpServletResponse;
@@ -15,6 +17,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.grownited.bean.CategoryBean;
 import com.grownited.bean.ForgetPasswordBean;
 import com.grownited.bean.LoginBean;
 import com.grownited.bean.UpdatePasswordBean;
@@ -179,6 +182,14 @@ public class SessionController {
 			session.invalidate();
 			return"redirect:/login";
 			
+		}
+		
+		@GetMapping("/listuser")
+		public String listUser(Model model)
+		{
+	List<UserBean> listUser = userDao.getAllUser();
+			model.addAttribute("listUser",listUser);
+			return "ListUser";
 		}
 }
 			
