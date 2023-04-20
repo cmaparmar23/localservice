@@ -13,6 +13,8 @@
 
 
 <jsp:include page="AdminSideBar.jsp"></jsp:include>
+<jsp:include page="AdminHeader.jsp"></jsp:include>
+
 <!--  main contain  -->
 <main id="main" class="main">
 
@@ -80,9 +82,9 @@
 		<td class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center"><%=ob.isDeleted() %></td>
 		<td class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center"
 	
-	><a href="deletecategory/<%=ob.getOrderDeatailId() %>">Delete</a>|
+	><a href="deleteorderdeataill/<%=ob.getOrderDeatailId() %>">Delete</a>|
 	
-		<a href="viewcategory/<%=ob.getOrderDeatailId()%>">View</a></td>
+		<a href="vieworderdeatail/<%=ob.getOrderDeatailId()%>">View</a></td>
 
 </tr>
 <%} %>
@@ -120,6 +122,7 @@
 </div>
 </main>
 
+  <jsp:include page="AllJs.jsp"></jsp:include>
 
 
   

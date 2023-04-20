@@ -10,7 +10,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.grownited.bean.StatusBean;
-import com.grownited.bean.ServiceBean;
+import com.grownited.bean.StatusBean;
 import com.grownited.bean.StatusBean;
 @Repository
 
@@ -58,6 +58,24 @@ String selectQuery = "select * from status where deleted = false";
 	
 	
 	//list
+	
+	public StatusBean getStatusById(Integer statusId) {
+		StatusBean statusBean = null;
+		try {
+			
+		statusBean = 	stmt.queryForObject("select * from status where statusId = ?",new BeanPropertyRowMapper<StatusBean>(StatusBean.class), new Object[] {statusId});
+			
+		} catch(Exception e) {
+			System.out.println("StatusDao : : getStatusById()");
+			System.out.println(e.getMessage());
+			
+		}
+		return statusBean;
+		
+	}
+	
+	//update
+	
 	
 	
 

@@ -13,6 +13,8 @@
 
 
 <jsp:include page="AdminSideBar.jsp"></jsp:include>
+<jsp:include page="AdminHeader.jsp"></jsp:include>
+
 <!--  main contain  -->
 <main id="main" class="main">
 
@@ -73,7 +75,7 @@ for(StatusBean sb:listStatus){
 	
 	><a href="deletecategory/<%=sb.getStatusId() %>">Delete</a>|
 	
-		<a href="viewcategory/<%=sb.getStatusId() %>">View</a></td>
+		<a href="viewstatus/<%=sb.getStatusId() %>">View</a></td>
 
 </tr>
 		
@@ -114,6 +116,7 @@ for(StatusBean sb:listStatus){
 </div>
 </main>
 
+  <jsp:include page="AllJs.jsp"></jsp:include>
 
 
   

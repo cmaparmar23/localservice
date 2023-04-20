@@ -13,6 +13,7 @@
 
 
 <jsp:include page="AdminSideBar.jsp"></jsp:include>
+<jsp:include page="AdminHeader.jsp"></jsp:include>
 <!--  main contain  -->
 <main id="main" class="main">
 
@@ -55,6 +56,7 @@
 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Pincode</th>
 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">City</th>
 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">State</th>
+<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Deleted?</th>
 <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
 <th class="text-secondary opacity-7"></th>
 </tr>
@@ -80,7 +82,7 @@
 	
 	><a href="deletecategory/<%=ab.getAddressId() %>">Delete</a>|
 	
-		<a href="viewcategory/<%=ab.getAddressId() %>">View</a></td>
+		<a href="viewaddress/<%=ab.getAddressId() %>">View</a></td>
 
 </tr>
 <%} %>
@@ -119,7 +121,7 @@
 
 
 
-  
+  <jsp:include page="AllJs.jsp"></jsp:include>
 </body>
 </html>
 

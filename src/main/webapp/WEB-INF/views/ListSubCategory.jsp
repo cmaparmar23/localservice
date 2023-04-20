@@ -1,113 +1,92 @@
 <%@page import="com.grownited.bean.SubCategoryBean"%>
 <%@page import="java.util.List"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>localservice  | List Subcategory</title>
+<title>eComApp | List SubCategory</title>
 <jsp:include page="AllCss.jsp"></jsp:include>
 </head>
 <body>
 
-
-<jsp:include page="AdminSideBar.jsp"></jsp:include>
-<!--  main contain  -->
-<main id="main" class="main">
-
-    <div class="pagetitle">
-      <h1>Dashboard</h1>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">SubCategory</li>
-        </ol>
-      </nav>
-    </div><!-- End Page Title -->
-
-   <%
-
-	List<SubCategoryBean> list = (List<SubCategoryBean>)request.getAttribute("listSubCategory");
+	<jsp:include page="AdminHeader.jsp"></jsp:include>
+	<jsp:include page="AdminSideBar.jsp"></jsp:include>
 
 
-%>
+	<main id="main" class="main">
+	<div class="pagetitle">
+		<h1>SubCategory</h1>
+		<nav>
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="admindashboard">Home</a></li>
+				<li class="breadcrumb-item">SubCategory</li>
+				<li class="breadcrumb-item active">List</li>
+			</ol>
+		</nav>
+	</div>
 
 
-<div class="container-fluid py-4">
-<div class="row">
-<div class="col-12">
-<div class="card mb-4">
-<div class="card-header pb-0">
-<h6>Sub Categories</h6>
-</div>
-<div class="card-body px-0 pt-0 pb-2">
-<div class="table-responsive p-0">
-<table class="table align-items-center mb-0">
-<thead>
-<tr>
-<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">SubCategoryId</th>
-<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 text-center">CategoryId</th>
-<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">SubCategoryName</th>
-<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">CategoryName</th>
-<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Action</th>
-<th class="text-secondary opacity-7"></th>
-</tr>
-</thead>
-<tbody>
-<%
-	for(SubCategoryBean sb:list)
-	{
-%>
-
-	
-<tr>
-        <td class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center"><%=sb.getSubCategoryId()%></td>
-		<td class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2 text-center"><%=sb.getCategoryId() %></td>
-		<td class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center"><%=sb.getSubCategoryName()%></td>
-		<td class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center"><%=sb.getCategoryName()%></td>
-		
-		<td class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center"><%=sb.isDeleted() %></td>
-		
-	
-	
-
-</tr>
-<%} %>
-
-</tbody>
-
-</table><br>
-<center>
- <div class="col-"><a href="newsubcategory">
-                      <button class="btn btn-primary w-50" type="submit" name="saveSubCategory" value="SaveService">Add New Sub Category</button>
-                      </a>
-                    </div>
-                    </div>
-                    </input>
-                    </center>
+	<%
+		List<SubCategoryBean> listSubCategory = (List<SubCategoryBean>) request.getAttribute("listSubCategory");
+	%>
 
 
-</div>
-</div>
-</div>
-</div>
-</div>
+	<section class="section">
+		<div class="row">
+			<div class="col-lg-12">
 
-</div>
-<div class="ps__rail-x" style="left: 0pdiv class="ps__thumb-x" tabin"lefh: 0px;"><div class="ps__thumb-y" tabindex="0" style="top: 0px; height: 0px;"></div>
-
-
-
-</div>
-</div>
-</div>
-
-</div>
-</main>
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">List SubCategory
+													<a href="newsubcategory"><i class="bi bi-plus-circle-fill"></i></a>
+						
+						</h5>
 
 
+						<!-- Table with stripped rows -->
 
-  
+ 							<table class="table datatable">
+								<thead>
+									<tr>
+										<th>SubCategoryName</th>
+										<th>CategoryName</th>
+										<th>Action</th>
+									</tr>
+								</thead>
+								<tbody>
+									<%
+										for (SubCategoryBean sb : listSubCategory) {
+									%>
+									<tr>
+										<td><%=sb.getSubCategoryName()%></td>
+										<td><%=sb.getCategoryName()%>
+										<td>
+										<a href="deletesubcategory/<%=sb.getSubCategoryId()%>"><i class="bi bi-trash text-danger"></i> </a> |<a href="viewsubcategory?subcategoryId<%=sb.getSubCategoryId() %>"><i class="bi bi-eye"></i></a>|
+										<a href="editsubcategory?subCategoryId=<%=sb.getSubCategoryId() %>"><i class="bi bi-pencil text-primary"></i></a>  
+										
+										</td>
+									</tr>
+									<%
+										}
+									%>
+								</tbody>
+							</table>
+						 
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</section>
+	</main>
+
+	<jsp:include page="AdminFooter.jsp"></jsp:include>
+	<jsp:include page="AllJs.jsp"></jsp:include>
+
+
 </body>
 </html>

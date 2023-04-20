@@ -10,6 +10,18 @@ public class UserBean {
 	private String password;
 	private Integer role;
 	private String otp;
+	private String gender;
+	private String dob;
+	private String createdAt;
+	//boolean active;
+	private String contactNum;
+	private String imageUrl;
+	public String getImageUrl() {
+		return imageUrl;
+	}
+	public void setImageUrl(String imageUrl) {
+		this.imageUrl = imageUrl;
+	}
 	public Integer getUserId()
 	{
 		return userId;
@@ -63,7 +75,38 @@ public class UserBean {
 	}
 	public void setOtp(String otp) {
 		this.otp = otp;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	public String getDob() {
+		return dob;
+	}
+	public void setDob(String dob) {
+		this.dob = dob;
+	}
+	public String getCreatedAt() {
+		return createdAt;
+	}
+	public void setCreatedAt(String createdAt) {
+		this.createdAt = createdAt;
+	}
+	//public boolean isActive() {
+		//return active;
+	//}
+	//public void setActive(boolean active) {
+		//this.active = active;
+	//}
+	public String getContactNum() {
+		return contactNum;
+	}
+	public void setContactNum(String contactNum) {
+		this.contactNum = contactNum;
 	} 
+	
 	
 }
 

@@ -1,3 +1,5 @@
+
+
 <%@page import="com.grownited.bean.SubCategoryBean"%>
 <%@page import="com.grownited.bean.CategoryBean"%>
 <%@page import="com.grownited.bean.UserBean"%>
@@ -8,10 +10,11 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>address</title>
+<title>Service</title>
 <jsp:include page="AllCss.jsp"></jsp:include>
 </head>
 <body>
+<jsp:include page="AdminHeader.jsp"></jsp:include>
 <jsp:include page="AdminSideBar.jsp"></jsp:include>
 <!--  main contain  -->
 <main id="main" class="main">
@@ -27,13 +30,10 @@
     </div><!-- End Page Title -->
     
     
- <div class="container-fluid py-4">
+ <div class="container-fluid py-8">
 <div class="row">
 <div class="col-8">
 <div class="card mb-4">
-<div class="card-header pb-0">
-
-</div>
 <div class="card-body px-0 pt-0 pb-2">
 <div class="table-responsive p-0">
 
@@ -45,12 +45,6 @@
                     <h5 class="card-title text-center pb-0 fs-4">Add New Service</h5>
                    
                   </div>
-
-
-
-
-
-
 
 <body>
 
@@ -64,116 +58,100 @@
 <%
 	List<SubCategoryBean> listsubCategory = (List<SubCategoryBean>) request.getAttribute("listSubCategory");
 %>
-<form  action="saveservice" method="post">
-  <div class="col-12">
-                      <label for="yourPassword" class="form-label">Name</label><br>
-                      <input type="text" name="name" class="form-control" id="yourPassword" required>
-                      <div class="invalid-feedback">Add New Service</div><br><br>
-                      
 
-  <div class="col-12">
-                      <label for="yourPassword" class="form-label">Description</label><br>
-                      <input type="text" name="description" class="form-control" id="yourPassword" required>
-                      <div class="invalid-feedback">Add New Qty</div><br><br>
-                      
-
-
- Category:<select name ="CategoryId">
- 
-<%
-	for(CategoryBean cb : list) {
-		
-	
-%>		
-      <option value = "<%=cb.getCategoryId()%>">
-      <%=cb.getCategoryName()%>  </option>
-      <%
-	}
-      %>
-         </select><br><br>
-         
-         
-         
-       SubCategory:  <select name ="subCategoryId">
-         <%
-	for(SubCategoryBean sb : listsubCategory) {
-		
-	
-%>		
-      <option value = "<%=sb.getSubCategoryId()%>">
-      <%=sb.getSubCategoryName()%>  </option>
-      <%
-	}
-      %>
-         </select><br><br>
-           <div class="col-12">
-                      <label for="yourPassword" class="form-label">Qty</label><br>
-                      <input type="text" name="qty" class="form-control" id="yourPassword" required>
-                      <div class="invalid-feedback">Add New Qty</div><br><br>
-                      
-         
-
-  <div class="col-12">
-                      <label for="yourPassword" class="form-label">Price</label><br>
-                      <input type="text" name="price" class="form-control" id="yourPassword" required>
-                      <div class="invalid-feedback">Add New Qty</div><br><br>
-                      
-  <div class="col-12">
-                      <label for="yourPassword" class="form-label">TopSellinglnd:</label><br>
-                      <input type="text" name="topSellinglnd" class="form-control" id="yourPassword" required>
-                      <div class="invalid-feedback">Add New Qty</div><br><br>
-  <div class="col-12">
-                      <label for="yourPassword" class="form-label">MostValueind:</label><br>
-                      <input type="text" name="mostValuelnd" class="form-control" id="yourPassword" required>
-                      <div class="invalid-feedback">Add New Qty</div><br><br>
-                      
-                      
-                       <div class="col-12">
-                      <label for="yourPassword" class="form-label">BrandName:</label><br>
-                      <input type="text" name="brandName" class="form-control" id="yourPassword" required>
-                      <div class="invalid-feedback">Add New Qty</div><br><br>
-  <div class="col-12">
-                      <label for="yourPassword" class="form-label">ServiceDetailDescriptionURL::</label><br>
-                      <input type="text" name="serviceDetailDescriptionURL" class="form-control" id="yourPassword" required>
-                      <div class="invalid-feedback">Add New Qty</div><br><br>
- 
-
-
-ServiceDetailDescriptionURL:<input type="text" name="serviceDetailDescriptionURL"><br><br>
-
-User:<select name ="UserId">
-       <%
-	for(UserBean ub : listUser) {
-		
-	
-%>		
-      <option value = "<%=ub.getUserId()%>">
-      <%=ub.getFirstName()%>  </option>
-      <%
-	}
-      %>
-         </select><br><br>
-
-		<br><br>
-
- <div class="col-8">
-                      <button class="btn btn-primary w-100" type="submit" name="saveService" value="SaveService">Save Service</button>
-                    </div>
+<form class="row g-3"  action="saveservice" method="post">
+                <div class="col-12">
+                  <label for="inputNanme4" class="form-label"> Name</label>
+                  <input type="text" class="form-control" id="inputNanme4" name="name">
+                </div>
+                
+                 <div class="col-12">
+                  <label for="inputNanme4" class="form-label">Description </label>
+                  <input type="text" class="form-control" id="inputNanme4" name="description">
+                </div>
+                
+                
+            <div class="col-md-12">
+                  <label for="inputState" class="form-label">Category</label>
+          
+                  <select id="inputState" class="form-select" name ="CategoryId">
+                  <option selected="">Choose...</option>
+                  <%
+						for(CategoryBean cb : list) {
+					%>	
+                    
+                    <option value = "<%=cb.getCategoryId()%>">
+      				<%=cb.getCategoryName()%>  </option>
+       							<%
+													}
+      								%>
+                  </select>
+                </div>
+                
+                 <div class="col-md-12">
+                  <label for="inputState" class="form-label"> SubCategory</label>
+          
+                  <select id="inputState" class="form-select" name ="subCategoryId">
+                  <option selected="">Choose...</option>
+       			  <%
+						for(SubCategoryBean sb : listsubCategory) {
+				%>		
+     				<option value = "<%=sb.getSubCategoryId()%>">
+     				 <%=sb.getSubCategoryName()%>  </option>
+      			<%
+					}
+      			%>
+                  
+                  </select>
+                </div>
+                
+                 <div class="col-12">
+                  <label for="inputNanme4" class="form-label"> QTY</label>
+                  <input type="text" class="form-control" id="inputNanme4"  name="qty">
+                </div>
+                
+                 <div class="col-12">
+                  <label for="inputNanme4" class="form-label"> Price</label>
+                  <input type="text" class="form-control" id="inputNanme4" name="price">
+                </div>
+                
+              
+                
+                 <div class="col-12">
+                  <label for="inputNanme4" class="form-label"> MostValuelnd</label>
+                  <input type="text" class="form-control" id="inputNanme4" name="mostValuelnd">
+                </div>
+                
+                 <div class="col-12">
+                  <label for="inputNanme4" class="form-label"> BrandName</label>
+                  <input type="text" class="form-control" id="inputNanme4" name="brandName">
+                </div>
+                
+                 <div class="col-12">
+                  <label for="inputNanme4" class="form-label"> ServiceDetailDescriptionURL</label>
+                  <input type="text" class="form-control" id="inputNanme4" name="serviceDetailDescriptionURL">
+                </div>
+                
+                  <div class="form-check">
+                      <label class="form-check-label" for="gridCheck1">TopSellinglnd 
+                      </label>
+                      <input class="form-check-input" type="checkbox" id="gridCheck1" name="topSellinglnd">
+                       
                     </div>
                     
-</form> <br><br>
+                 
+                
+                <div class="text-center">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                  <button type="reset" class="btn btn-secondary">Reset</button>
+                </div>
+              </form>
+ <br><br>
 </div>
 </div>
 </div></div>
 </div>
 </div>
 </div>
-
-
-
-
-
-
-
 </body>
 </html>

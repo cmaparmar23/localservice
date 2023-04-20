@@ -6,7 +6,9 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
+import com.grownited.bean.ServiceBean;
 import com.grownited.bean.SubCategoryBean;
+import com.mysql.cj.x.protobuf.MysqlxSql.StmtExecute;
 
 
 @Repository
@@ -30,4 +32,30 @@ public class SubCategoryDao {
 		return stmt.query(joinQuery, new BeanPropertyRowMapper<SubCategoryBean>(SubCategoryBean.class));
 		
 	}
+	public void deleteSubCategory(Integer subCategoryId) {
+		// TODO Auto-generated method stub
+		String updateQuery=  "delete from subcategory where subCategoryId=?" ;
+		stmt.update(updateQuery,subCategoryId);
+		
+	}
+
+	public static SubCategoryBean getSubCategoryById(Integer subCategoryId) {
+		
+		return stmts.queryForObject("select * from subcategory where subCategoryId = ?", new BeanPropertyRowMapper<>(SubCategoryBean.class),new Object[] { });
+	}
+	
+	public void updateSubCategory(SubCategoryBean subCategory) {
+		stmt.update("update subCategory set subCategoryName = ? , categoryId = ? where subCategoryId = ? ",
+				subCategory.getSubCategoryName(), subCategory.getCategoryId(), subCategory.getSubCategoryId());
+	}
+
 }
+	
+	
+	
+	//update
+	
+	//delete
+	
+	
+

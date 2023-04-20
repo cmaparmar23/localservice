@@ -1,108 +1,121 @@
-<%@page import="java.util.List"%>
 <%@page import="com.grownited.bean.CategoryBean"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>localservice | New Category</title>
-
-
-
-
+<title>eComApp | New SubCategory</title>
 <jsp:include page="AllCss.jsp"></jsp:include>
 </head>
 <body>
-<jsp:include page="AdminSideBar.jsp"></jsp:include>
-<!--  main contain  -->
-<main id="main" class="main">
 
-    <div class="pagetitle">
-      <h1>Dashboard</h1>
-      <nav>
-        <ol class="breadcrumb">
-          <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">SubCategory</li>
-        </ol>
-      </nav>
-    </div><!-- End Page Title -->
-    <main>
-    <div class="container-fluid py-4">
-<div class="row">
-<div class="col-8">
-<div class="card mb-4">
-<div class="card-header pb-0">
+	<jsp:include page="AdminHeader.jsp"></jsp:include>
+	<jsp:include page="AdminSideBar.jsp"></jsp:include>
 
-</div>
-<div class="card-body px-0 pt-0 pb-2">
-<div class="table-responsive p-0">
 
-              <div class="card mb-4">
-
-                <div class="card-body">
-
-                  <div class="pt-4 pb-2">
-                    <h5 class="card-title text-center pb-0 fs-4">Add New SubCategory</h5>
-                   
-                  </div>
+	<main id="main" class="main">
+	<div class="pagetitle">
+		<h1>Sub Category</h1>
+		<nav>
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="admindashboard">Home</a></li>
+				<li class="breadcrumb-item">SubCategory</li>
+				<li class="breadcrumb-item active">New</li>
+			</ol>
+		</nav>
+	</div>
 
 
 
+	<section class="section">
+		<div class="row">
+			<div class="col-lg-12">
+
+				<div class="card">
+					<div class="card-body">
+						<h5 class="card-title">New SubCategory</h5>
+
+						<%
+							List<CategoryBean> list = (List<CategoryBean>) request.getAttribute("list");
+						%>
+
+						<form action="savesubcategory" method="post">
+							<div class="row mb-3">
+								<label for="inputText" class="col-sm-2 col-form-label">SubCategoryName
+								</label>
+								<div class="col-sm-6">
+									<input type="text" name="subCategoryName" class="form-control">
+								</div>
+							</div>
+
+							<div class="row mb-3">
+								<label class="col-sm-2 col-form-label">Category</label>
+								<div class="col-sm-6">
+									<select name="categoryId" id="categoryId" class="form-select"
+										aria-label="Default select example">
+										<option  selected value="-1">Select Category</option>
+										<%
+											for (CategoryBean cb : list) {
+										%>
+										<option value="<%=cb.getCategoryId()%>">
+											<%=cb.getCategoryName()%></option>
+										<%
+											}
+										%>
+									</select>
+								</div>
+							</div>
+
+							<div class="row mb-3">
+								<div class="col-2"></div>
+								<div class="col-2">
+									<button class="btn btn-primary w-100" type="submit">Save
+										SubCategory</button>
+
+								</div>
+								<div class="col-2">
+									<a class="btn btn-danger w-100" href="listsubcategory"
+										type="button">Cancel</a>
+
+								</div>
+
+							</div>
 
 
 
-
-    <%
-	List<CategoryBean> list = (List<CategoryBean>) request.getAttribute("list");
-%>
-
-<form action="savesubcategory" method="post">
-<div class="col-12">
-                      <label for="yourPassword" class="form-label">SubCategory</label>
-                      <input  name="subCategoryName" class="form-control" id="yourPassword" required>
-                      <div class="invalid-feedback">Add New SubCategory</div>
-                    </div>
+						</form>
 
 
 
+						<!-- Table with stripped rows -->
 
-<br><br>
+						<br> <a href="listsubcategory"> <i
+							class="bi bi-arrow-left"></i> BACK
+						</a>
 
- <div class="col-15">
-                      <label for="yourPassword" class="form-label">Category</label>
-                      <inpu><select name ="CategoryId">
-                      
+					</div>
+				</div>
 
-<%
-	for(CategoryBean cb : list) {
+			</div>
+		</div>
+	</section>
+	</main>
+
+	<jsp:include page="AdminFooter.jsp"></jsp:include>
+	<jsp:include page="AllJs.jsp"></jsp:include>
+	<script>
 		
+		function validateSubCategory(){
+			categoryId = document.getElementById("categoryId");
+			isError = false;
+			if(categoryId.value == "-1"){
+				isError = true;
+			}
+		}
 	
-%>		
-      <option value = "<%=cb.getCategoryId()%>">
-      <%=cb.getCategoryName()%>  </option>
-      <%
-	}
-      %>
-         </select><br><br>
-           <div class="col-12">
-                      <button class="btn btn-primary w-100" type="submit">Save SubCategory</button>
-                    </div>
-                    </div>
-                    </input>
-    </form>
-         
-         
-         
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</main>
+	</script>
 
 </body>
 </html>

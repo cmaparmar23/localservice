@@ -21,7 +21,7 @@
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-          <li class="breadcrumb-item active">Dashboard</li>
+          <li class="breadcrumb-item active">Category</li>
         </ol>
       </nav>
     </div><!-- End Page Title -->
@@ -41,7 +41,7 @@
                 <div class="card-body">
 
                   <div class="pt-4 pb-2">
-                    <h5 class="card-title text-center pb-0 fs-4">Add New Service</h5>
+                    <h5 class="card-title text-center pb-0 fs-4">Add New Category</h5>
                    
                   </div>
 
@@ -63,9 +63,19 @@
                     </div>
 
                    
-                    <div class="col-12">
-                      <button class="btn btn-primary w-100" type="submit">Save Category</button>
-                    </div>
+                  
+								<div class="col-3"></div>
+								<div class="col-3">
+									<a href="newcategory"><button class="btn btn-primary w-100" type="submit">Save Category
+										</button></a>
+
+								</div>
+								<div class="col-2">
+									<a class="btn btn-danger w-100" href="listcategories" type="button">Cancel</a>
+
+								</div>
+
+							</div>
     </form>
     
     </div>

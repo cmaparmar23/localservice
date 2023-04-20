@@ -36,6 +36,7 @@ public class OrderDeatailDao {
 		
 		return list;
 	}
+	
 	public void deleteOrderDeatail(Integer orderDeatailId) {
 		// TODO Auto-generated method stub
 		String updateQuery=  "delete from orderDeatail where orderDeatailId=?" ;

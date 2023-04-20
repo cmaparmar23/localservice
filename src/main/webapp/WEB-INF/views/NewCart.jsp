@@ -98,6 +98,7 @@
                       
                       
                        <div class="col-12">
+                       <input type="hidden" name="serviceId" value=<%service.getServiceId() %> "/>
                       <button class="btn btn-primary w-100" type="submit" name="saveCart" value="Savecart">Save Cart</button>
                     </div>
                     </div>

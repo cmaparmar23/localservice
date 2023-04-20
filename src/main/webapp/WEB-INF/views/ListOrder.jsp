@@ -13,6 +13,8 @@
 
 
 <jsp:include page="AdminSideBar.jsp"></jsp:include>
+<jsp:include page="AdminHeader.jsp"></jsp:include>
+
 <!--  main contain  -->
 <main id="main" class="main">
 
@@ -116,6 +118,7 @@ List<OrderBean>listOrder = (List<OrderBean>)request.getAttribute("listOrder");
 </main>
 
 
+  <jsp:include page="AllJs.jsp"></jsp:include>
 
   
 </body>

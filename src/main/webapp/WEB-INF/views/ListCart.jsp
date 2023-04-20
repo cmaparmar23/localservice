@@ -13,6 +13,8 @@
 
 
 <jsp:include page="AdminSideBar.jsp"></jsp:include>
+<jsp:include page="AdminHeader.jsp"></jsp:include>
+
 <!--  main contain  -->
 <main id="main" class="main">
 
@@ -79,7 +81,7 @@ for(CartBean cb:listCart){
 	
 	><a href="deletecategory/<%=cb.getCartId() %>">Delete</a>|
 	
-		<a href="viewcategory/<%=cb.getCartId() %>">View</a></td>
+		<a href="viewcart/<%=cb.getCartId() %>">View</a></td>
 
 </tr>
 		
@@ -121,6 +123,7 @@ for(CartBean cb:listCart){
 </main>
 
 
+  <jsp:include page="AllJs.jsp"></jsp:include>
 
   
 </body>

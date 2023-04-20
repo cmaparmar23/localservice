@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.grownited.bean.SubCategoryBean;
 import com.grownited.dao.CategoryDao;
@@ -52,9 +54,41 @@ public class SubCategoryController {
 		model.addAttribute("listSubCategory", listSubCategory);
 		return "ListSubCategory";
 	}
+	@GetMapping("/deletesubcategory/{subcategoryId}")
+	public String deleteSubCategory(@PathVariable("subcategoryId")Integer subcategoryId) {
+		//12 45
+		subCategoryDao.deleteSubCategory(subcategoryId);
+		return "redirect:/listsubcategory"; //
+	}
+	@GetMapping("/viewsubcategory")
+
+		public String viewSubCategory(@RequestParam("subcategoryId")Integer subCategoryId,Model model) {
+		SubCategoryBean subcategoryBean=SubCategoryDao.getSubCategoryById(subCategoryId);
+		model.addAttribute("subcategoryBean",subcategoryBean);
+		return "ViewSubCategory";
+	}
+
+	@GetMapping("/editsubcategory")
+	public String editSubCategory(@RequestParam("subCategoryId") Integer subCategoryId,Model model) {
+
+		SubCategoryBean subCategory=subCategoryDao.getSubCategoryById(subCategoryId);
+		model.addAttribute("subCategory",subCategory);
+		model.addAttribute("list", categoryDao.getAllCategory());
+		return "EditSubCategory";
+	}
+
+	@PostMapping("/updatesubcategory")
+	public String updateSubCategory(SubCategoryBean subCategory) {
+		subCategoryDao.updateSubCategory(subCategory);
+		
+		return "redirect:/listsubcategory";
+	}
+	
+	
 	
 }
 
+	
 
 
 

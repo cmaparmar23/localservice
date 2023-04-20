@@ -71,7 +71,7 @@
                   <form class="row g-3 needs-validation" novalidate action="saveuser" method="post">
                     <div class="col-12">
                       <label for="yourName" class="form-label">FirstName</label>
-                      <input type="text" name="firstname" class="form-control" id="yourName" required>
+                      <input type="text" name="firstName" class="form-control" id="yourName" required>
                       <div class="invalid-feedback">Please, enter your FirstName!</div>
                     </div>
                      <div class="col-12">
