@@ -8,11 +8,12 @@ public class ServiceBean {
 	private String description;
 	private Integer qty;
 	private Integer price;
-	private String topSellinglnd;
-	private String mostValuelnd;
+	private Boolean mostValueInd;
 	private String brandName;
 	private String serviceDetailDescriptionURL;
-	boolean deleted;
+	private boolean deleted;
+	private Boolean latestInd;
+	private Boolean topSellingInd;
 	public Integer getServiceId() {
 		return serviceId;
 	}
@@ -61,17 +62,11 @@ public class ServiceBean {
 	public void setPrice(Integer price) {
 		this.price = price;
 	}
-	public String getTopSellinglnd() {
-		return topSellinglnd;
+	public Boolean getMostValueInd() {
+		return mostValueInd;
 	}
-	public void setTopSellinglnd(String topSellinglnd) {
-		this.topSellinglnd = topSellinglnd;
-	}
-	public String getMostValuelnd() {
-		return mostValuelnd;
-	}
-	public void setMostValuelnd(String mostValuelnd) {
-		this.mostValuelnd = mostValuelnd;
+	public void setMostValueInd(Boolean mostValueInd) {
+		this.mostValueInd = mostValueInd;
 	}
 	public String getBrandName() {
 		return brandName;
@@ -79,7 +74,6 @@ public class ServiceBean {
 	public void setBrandName(String brandName) {
 		this.brandName = brandName;
 	}
-
 	public String getServiceDetailDescriptionURL() {
 		return serviceDetailDescriptionURL;
 	}
@@ -92,7 +86,22 @@ public class ServiceBean {
 	public void setDeleted(boolean deleted) {
 		this.deleted = deleted;
 	}
-	
+	public Boolean getLatestInd() {
+		return latestInd;
+	}
+	public void setLatestInd(Boolean latestInd) {
+		this.latestInd = latestInd;
+	}
+	public Boolean getTopSellingInd() {
+		return topSellingInd;
+	}
+	public void setTopSellingInd(Boolean topSellingInd) {
+		this.topSellingInd = topSellingInd;
+	}
 	
 
-}
+	
+	
+	
+	
+	}

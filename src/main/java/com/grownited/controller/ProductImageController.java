@@ -3,6 +3,8 @@ import java.io.File;
 import java.io.FileWriter;
 
 
+import org.apache.commons.io.FileUtils;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,6 +46,38 @@ public class ProductImageController {
 	@GetMapping("/deleteproductimage")
 	public String deleteImage(@RequestParam("productImageId") Integer productImageId) {
 		productImageDao.deleteProductImage(productImageId);
+		return "redirect:/listproductimage";
+	}
+	@GetMapping("/uploadimage")
+	public String uploadImageForProduct() {
+		return "UploadImage";
+		
+	}
+	@PostMapping("/saveimage")
+	public String saveImage(ProductImageBean pb) {
+		System.out.println(pb.getImageFile().getOriginalFilename());
+		System.out.println(pb.getServiceId());
+		  
+		String mainPath = " C:\\sts\\localService\\src\\main\\resources\\static\\assets\\user\\products";
+		try
+		
+		{
+			File dir = new File (mainPath,pb.getServiceId()+"");
+			
+			
+			if(!dir.exists()) {
+				dir.mkdir();
+				
+			}
+			File file = new File(dir,pb.getImageFile().getOriginalFilename()); 
+			FileUtils.writeByteArrayToFile(file, pb.getImageFile().getBytes());
+			pb.setImageUrl("assets/users/products/"+pb.getServiceId()+"/"+pb.getImageFile().getOriginalFilename());
+			productImageDao.saveProductImage(pb);
+		
+		
+	}catch(Exception e) {
+		e.printStackTrace();
+	}
 		return "redirect:/listproductimage";
 	}
 

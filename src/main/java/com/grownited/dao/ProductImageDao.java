@@ -28,7 +28,10 @@ public class ProductImageDao {
 		stmt.update("delete from productimage where productimageid  = ?", productImageId);
 
 	}
-
+	public List<ProductImageBean> getImagesByProductId(Integer serviceId) {
+		return stmt.query("select * from productimage where serviceId = ?",
+				new BeanPropertyRowMapper<>(ProductImageBean.class), new Object[] { serviceId });
+	}
 	
 	
 	

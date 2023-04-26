@@ -1,3 +1,6 @@
+
+<%@page import="com.grownited.bean.ProductImageBean"%>
+<%@page import="java.util.List"%>
 <%@page import="com.grownited.bean.ServiceBean"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
@@ -83,7 +86,7 @@
             <div class="row">
                 <div class="col-sm-1">
                     <div class="logo">
-                        <h1><a href="./"><img src=""</a></h1>
+                        <h1><a href="./"></a></h1>
                     </div>
                 </div>
                 
@@ -120,7 +123,9 @@
             </div>
         </div>
     </div> <!-- End mainmenu area -->
-    
+    <%ServiceBean service = (ServiceBean) request.getAttribute("service") ;
+    List<ProductImageBean> productImages =(List<ProductImageBean>) request.getAttribute("productImages");
+    %>
    
     
        <div class="slider-area">
@@ -201,6 +206,11 @@
             </div>
         </div>
     </div> <!-- End promo area -->
+    <% 
+	List<ServiceBean> latestService = (List<ServiceBean>) request.getAttribute("latestService");
+	List<ServiceBean> topSellingService = (List<ServiceBean>) request.getAttribute("topSellingService");
+
+	%>
     
     <div class="maincontent-area">
         <div class="zigzag-bottom"></div>
@@ -210,374 +220,347 @@
                     <div class="latest-product">
                         <h2 class="section-title">Latest Service</h2>
                         <div class="product-carousel">
+                        <%
+                        for(ServiceBean serviceBean:latestService){
+                        %>
                             <div class="single-product">
                             
                                 <div class="product-f-image">
-                                    <img src="assets/user/products/3/E4.jpg" alt="">
+                                    <img src="assets/user/products/<%=serviceBean.getServiceId()%>/main.jpg" alt="">
                                     <div class="product-hover">
-                                        <a href="" class=add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                        <a href="" class=add-to-cart-link><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                        <a href=""class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                     </div>
                                 </div>
                                 
-                                <h2><a href="single-product.html">Fixing of Lighting </a></h2>
+                            <h2>
+									<a href="single-product.html"><%=serviceBean.getName()%></a>
+								</h2>
                                 
                                 <div class="product-carousel-price">
-                                    <ins>Rs.500-2000/-</ins> <del>Rs.1000-2500/-</del>
-                                </div> 
-                            </div>
-                            <div class="single-product">
-                                <div class="product-f-image">
-                                    <img src="assets/user/products/3/E1.jpg" alt="">
-                                    <div class="product-hover">
-                                        <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                    </div>
-                                </div>
-                                
-                                <h2>Installation of Switch Board</h2>
-                                <div class="product-carousel-price">
-                                    <ins>Rs.500-1500/-</ins> <del>Rs.1000-2000/-</del>
-                                </div> 
-                            </div>
-                            <div class="single-product">
-                                <div class="product-f-image">
-                                    <img src="assets/user/products/7/p5.jpg"  alt="">
-                                    <div class="product-hover">
-                                        <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                    </div>
-                                </div>
-                                
-                                <h2>Residential Plumbers</h2>
+									<ins><%=serviceBean.getPrice()%></ins>
+									<del><%=serviceBean.getPrice() + (serviceBean.getPrice() * 0.10)%></del>
+								</div>
+							</div>
+							<%
+								}
+							%>
+						</div>
+					</div>
+				</div>
+			</div>
 
-                                <div class="product-carousel-price">
-                                    <ins>Rs.800/-</ins> <del>Rs.100/-</del>
-                                </div>                                 
-                            </div>
-                            <div class="single-product">
-                                <div class="product-f-image">
-                                    <img src="assets/user/products/7/p6.jpg" alt="">
-                                    <div class="product-hover">
-                                        <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                    </div>
-                                </div>
-                                
-                                <h2><a href="single-product.html">Service and Reapair Plumbers</a></h2>
+			<br> <bR>
+                                                                           
+                            <!-- End main content area -->
+    
+    <div class="row">
+				<div class="col-md-12">
+					<div class="latest-product">
+						<h2 class="section-title">Top Selling Products</h2>
+						<div class="product-carousel">
+<%
+								for (ServiceBean serviceBean : topSellingService) {
+							%>
+							
+							<div class="single-product">
+								<div class="product-f-image">
+									<img
+										src="assets/users/products/<%=serviceBean.getServiceId() %>/main.jpg"
+										alt="">
+									<div class="product-hover">
+										<a href=""
+											class="add-to-cart-link"><i class="fa fa-shopping-cart"></i>
+											Add to cart</a> <a
+											href=""
+											class="view-details-link"><i class="fa fa-link"></i> See
+											details</a>
+									</div>
+								</div>
 
-                                <div class="product-carousel-price">
-                                    <ins>Rs.400/-</ins> <del>Rs.500/-</del>
-                                </div>                            
-                            </div>
-                            <div class="single-product">
-                                <div class="product-f-image">
-                                    <img src="assets/user/products/3/E6.jpg" alt="">
-                                    <div class="product-hover">
-                                        <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                    </div>
-                                </div>
-                                
-                                <h2>Geyser Reapr</h2>
+								<h2>
+									<a href="single-product.html"><%=serviceBean.getName() %></a>
+								</h2>
 
-                                <div class="product-carousel-price">
-                                    <ins>Rs.1500/-</ins> <del>Rs.1800/-</del>
-                                </div>                                 
-                            </div>
-                            <div class="single-product">
-                                <div class="product-f-image">
-                                    <img src="assets/user/products/9/y2.jpg" alt="">
-                                    <div class="product-hover">
-                                        <a href="#" class="add-to-cart-link"><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <a href="single-product.html" class="view-details-link"><i class="fa fa-link"></i> See details</a>
-                                    </div>
-                                </div>
-                                
-                                <h2><a href="single-product.html">Samsung gallaxy note 4</a></h2>
+								<div class="product-carousel-price">
+									<ins><%=serviceBean.getPrice()%></ins>
+									<del><%=serviceBean.getPrice() + (serviceBean.getPrice() * 0.10)%></del>
+								</div>
+							</div>
+							<%
+								}
+							%>
+						</div>
+					</div>
+				</div>
+			</div>
 
-                                <div class="product-carousel-price">
-                                    <ins>$400.00</ins>
-                                </div>                            
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> <!-- End main content area -->
-    
-    <div class="brands-area">
-        <div class="zigzag-bottom"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="brand-wrapper">
-                        <div class="brand-list">
-                            <img src="assets/user/img/brand1.png" alt="">
-                            <img src="assets/user/img/brand2.png" alt="">
-                            <img src="assets/user/img/brand3.png" alt="">
-                            <img src="assets/user/img/brand4.png" alt="">
-                            <img src="assets/user/img/brand5.png" alt="">
-                            <img src="assets/user/img/brand6.png" alt="">
-                            <img src="assets/user/img/brand1.png" alt="">
-                            <img src="assets/user/img/brand2.png" alt="">                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> <!-- End brands area -->
-    
-    <div class="product-widget-area">
-        <div class="zigzag-bottom"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="single-product-widget">
-                        <h2 class="product-wid-title">Top Selling</h2>
-                        <a href="" class="wid-view-more">View All</a>
-                        <%
-                        int i=0;
-                        for(ServiceBean service : topSellinglnd) {
-                        	i++;
-                        	
-             if(i==4)
-            	 break;
-                        	%>
-                        
-                        
-                        
-                        
-                        <div class="single-wid-product">
-                            <a href="single-product.html"><img src="assets/user/products/3/<%=service.getServiceId() %>/1.jpg alt="" class="product-thumb"></a>
-                            <h2><a href="single-product.html"><%=service.getName()%></a></h2>
-                            <div class="product-wid-rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="product-wid-price">
-                                <ins><%=service.getPrice() %></ins> 
-                                <del><%=service.getPrice()+(service.getPrice()*0.10) %></del>
-                            </div>                            
-                        </div>
-                        <%
-                        }
-                        %>
-                        <div class="single-wid-product">
-                            <a href="single-product.html"><img src="assets/user/products/img/product-thumb-2.jpg" alt="" class="product-thumb"></a>
-                            <h2><a href="single-product.html">Apple new mac book 2015</a></h2>
-                            <div class="product-wid-rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="product-wid-price">
-                                <ins>$400.00</ins> <del>$425.00</del>
-                            </div>                            
-                        </div>
-                        <div class="single-wid-product">
-                            <a href="single-product.html"><img src="assets/user/product-thumb-3.jpg" alt="" class="product-thumb"></a>
-                            <h2><a href="single-product.html">Apple new i phone 6</a></h2>
-                            <div class="product-wid-rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="product-wid-price">
-                                <ins>$400.00</ins> <del>$425.00</del>
-                            </div>                            
-                        </div>
-                    </div>
-                </div>
-               
-                <div class="col-md-4">
-                    <div class="single-product-widget">
-                        <h2 class="product-wid-title">Recently Viewed</h2>
-                        <a href="#" class="wid-view-more">View All</a>
-                        <div class="single-wid-product">
-                            <a href="single-product.html"><img src="assets/user/img/product-thumb-4.jpg" alt="" class="product-thumb"></a>
-                            <h2><a href="single-product.html">Sony playstation microsoft</a></h2>
-                            <div class="product-wid-rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="product-wid-price">
-                                <ins>$400.00</ins> <del>$425.00</del>
-                            </div>                            
-                        </div>
-                        <div class="single-wid-product">
-                            <a href="single-product.html"><img src="assets/user/img/product-thumb-1.jpg" alt="" class="product-thumb"></a>
-                            <h2><a href="single-product.html">Sony Smart Air Condtion</a></h2>
-                            <div class="product-wid-rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="product-wid-price">
-                                <ins>$400.00</ins> <del>$425.00</del>
-                            </div>                            
-                        </div>
-                        <div class="single-wid-product">
-                            <a href="single-product.html"><img src="assets/user/img/product-thumb-2.jpg" alt="" class="product-thumb"></a>
-                            <h2><a href="single-product.html">Samsung gallaxy note 4</a></h2>
-                            <div class="product-wid-rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="product-wid-price">
-                                <ins>$400.00</ins> <del>$425.00</del>
-                            </div>                            
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="single-product-widget">
-                        <h2 class="product-wid-title">Top New</h2>
-                        <a href="#" class="wid-view-more">View All</a>
-                        <div class="single-wid-product">
-                            <a href="single-product.html"><img src="assets/user/img/product-thumb-3.jpg" alt="" class="product-thumb"></a>
-                            <h2><a href="single-product.html">Apple new i phone 6</a></h2>
-                            <div class="product-wid-rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="product-wid-price">
-                                <ins>$400.00</ins> <del>$425.00</del>
-                            </div>                            
-                        </div>
-                        <div class="single-wid-product">
-                            <a href="single-product.html"><img src="assets/user/img/product-thumb-4.jpg" alt="" class="product-thumb"></a>
-                            <h2><a href="single-product.html">Samsung gallaxy note 4</a></h2>
-                            <div class="product-wid-rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="product-wid-price">
-                                <ins>$400.00</ins> <del>$425.00</del>
-                            </div>                            
-                        </div>
-                        <div class="single-wid-product">
-                            <a href="single-product.html"><img src="assets/user/img/product-thumb-1.jpg" alt="" class="product-thumb"></a>
-                            <h2><a href="single-product.html">Sony playstation microsoft</a></h2>
-                            <div class="product-wid-rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                            </div>
-                            <div class="product-wid-price">
-                                <ins>$400.00</ins> <del>$425.00</del>
-                            </div>                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> <!-- End product widget area -->
-    
-    <div class="footer-top-area">
-        <div class="zigzag-bottom"></div>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-3 col-sm-6">
-                    <div class="footer-about-us">
-                        <h2>u<span>Stora</span></h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis sunt id doloribus vero quam laborum quas alias dolores blanditiis iusto consequatur, modi aliquid eveniet eligendi iure eaque ipsam iste, pariatur omnis sint! Suscipit, debitis, quisquam. Laborum commodi veritatis magni at?</p>
-                        <div class="footer-social">
-                            <a href="#" target="_blank"><i class="fa fa-facebook"></i></a>
-                            <a href="#" target="_blank"><i class="fa fa-twitter"></i></a>
-                            <a href="#" target="_blank"><i class="fa fa-youtube"></i></a>
-                            <a href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="col-md-3 col-sm-6">
-                    <div class="footer-menu">
-                        <h2 class="footer-wid-title">User Navigation </h2>
-                        <ul>
-                            <li><a href="#">My account</a></li>
-                            <li><a href="#">Order history</a></li>
-                            <li><a href="#">Wishlist</a></li>
-                            <li><a href="#">Vendor contact</a></li>
-                            <li><a href="#">Front page</a></li>
-                        </ul>                        
-                    </div>
-                </div>
-                
-                <div class="col-md-3 col-sm-6">
-                    <div class="footer-menu">
-                        <h2 class="footer-wid-title">Categories</h2>
-                        <ul>
-                            <li><a href="#">Mobile Phone</a></li>
-                            <li><a href="#">Home accesseries</a></li>
-                            <li><a href="#">LED TV</a></li>
-                            <li><a href="#">Computer</a></li>
-                            <li><a href="#">Gadets</a></li>
-                        </ul>                        
-                    </div>
-                </div>
-                
-                <div class="col-md-3 col-sm-6">
-                    <div class="footer-newsletter">
-                        <h2 class="footer-wid-title">Newsletter</h2>
-                        <p>Sign up to our newsletter and get exclusive deals you wont find anywhere else straight to your inbox!</p>
-                        <div class="newsletter-form">
-                            <form action="#">
-                                <input type="email" placeholder="Type your email">
-                                <input type="submit" value="Subscribe">
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> <!-- End footer top area -->
-    
-    <div class="footer-bottom-area">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-8">
-                    <div class="copyright">
-                        <p>&copy; 2015 uCommerce. All Rights Reserved. <a href="http://www.freshdesignweb.com" target="_blank">freshDesignweb.com</a></p>
-                    </div>
-                </div>
-                
-                <div class="col-md-4">
-                    <div class="footer-card-icon">
-                        <i class="fa fa-cc-discover"></i>
-                        <i class="fa fa-cc-mastercard"></i>
-                        <i class="fa fa-cc-paypal"></i>
-                        <i class="fa fa-cc-visa"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> <!-- End footer bottom area -->
-   
+
+
+		</div>
+	</div>
+	<!-- End main content area -->
+
+	<div class="brands-area">
+		<div class="zigzag-bottom"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="brand-wrapper">
+						<div class="brand-list">
+							<img src="assets/users/img/brand1.png" alt=""> <img
+								src="assets/users/img/brand2.png" alt=""> <img
+								src="assets/users/img/brand3.png" alt=""> <img
+								src="assets/users/img/brand4.png" alt=""> <img
+								src="assets/users/img/brand5.png" alt=""> <img
+								src="assets/users/img/brand6.png" alt=""> <img
+								src="assets/users/img/brand1.png" alt=""> <img
+								src="assets/users/img/brand2.png" alt="">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End brands area -->
+
+	<div class="product-widget-area">
+		<div class="zigzag-bottom"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="single-product-widget">
+						<h2 class="product-wid-title">Top Selling</h2>
+						<a href="" class="wid-view-more">View All</a>
+
+						<div class="single-wid-product">
+							<a href="single-product.html"><img
+								src="assets/users/products/main.jpg"
+								alt="" class="product-thumb"></a>
+							<h2>
+								<a href="single-product.html"></a>
+							</h2>
+							<div class="product-wid-rating">
+								<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+									class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+									class="fa fa-star"></i>
+							</div>
+							<div class="product-wid-price">
+								<ins></ins>
+								<del></del>
+							</div>
+						</div>
+					
+
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="single-product-widget">
+						<h2 class="product-wid-title">Recently Viewed</h2>
+						<a href="#" class="wid-view-more">View All</a>
+						<div class="single-wid-product">
+							<a href="single-product.html"><img
+								src="assets/users/img/product-thumb-4.jpg" alt=""
+								class="product-thumb"></a>
+							<h2>
+								<a href="single-product.html">Sony playstation microsoft</a>
+							</h2>
+							<div class="product-wid-rating">
+								<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+									class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+									class="fa fa-star"></i>
+							</div>
+							<div class="product-wid-price">
+								<ins>$400.00</ins>
+								<del>$425.00</del>
+							</div>
+						</div>
+						<div class="single-wid-product">
+							<a href="single-product.html"><img
+								src="assets/users/img/product-thumb-1.jpg" alt=""
+								class="product-thumb"></a>
+							<h2>
+								<a href="single-product.html">Sony Smart Air Condtion</a>
+							</h2>
+							<div class="product-wid-rating">
+								<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+									class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+									class="fa fa-star"></i>
+							</div>
+							<div class="product-wid-price">
+								<ins>$400.00</ins>
+								<del>$425.00</del>
+							</div>
+						</div>
+						<div class="single-wid-product">
+							<a href="single-product.html"><img
+								src="assets/users/img/product-thumb-2.jpg" alt=""
+								class="product-thumb"></a>
+							<h2>
+								<a href="single-product.html">Samsung gallaxy note 4</a>
+							</h2>
+							<div class="product-wid-rating">
+								<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+									class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+									class="fa fa-star"></i>
+							</div>
+							<div class="product-wid-price">
+								<ins>$400.00</ins>
+								<del>$425.00</del>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="single-product-widget">
+						<h2 class="product-wid-title">Top New</h2>
+						<a href="#" class="wid-view-more">View All</a>
+						<div class="single-wid-product">
+							<a href="single-product.html"><img
+								src="assets/users/img/product-thumb-3.jpg" alt=""
+								class="product-thumb"></a>
+							<h2>
+								<a href="single-product.html">Apple new i phone 6</a>
+							</h2>
+							<div class="product-wid-rating">
+								<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+									class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+									class="fa fa-star"></i>
+							</div>
+							<div class="product-wid-price">
+								<ins>$400.00</ins>
+								<del>$425.00</del>
+							</div>
+						</div>
+						<div class="single-wid-product">
+							<a href="single-product.html"><img
+								src="assets/users/img/product-thumb-4.jpg" alt=""
+								class="product-thumb"></a>
+							<h2>
+								<a href="single-product.html">Samsung gallaxy note 4</a>
+							</h2>
+							<div class="product-wid-rating">
+								<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+									class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+									class="fa fa-star"></i>
+							</div>
+							<div class="product-wid-price">
+								<ins>$400.00</ins>
+								<del>$425.00</del>
+							</div>
+						</div>
+						<div class="single-wid-product">
+							<a href="single-product.html"><img
+								src="assets/users/img/product-thumb-1.jpg" alt=""
+								class="product-thumb"></a>
+							<h2>
+								<a href="single-product.html">Sony playstation microsoft</a>
+							</h2>
+							<div class="product-wid-rating">
+								<i class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+									class="fa fa-star"></i> <i class="fa fa-star"></i> <i
+									class="fa fa-star"></i>
+							</div>
+							<div class="product-wid-price">
+								<ins>$400.00</ins>
+								<del>$425.00</del>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End product widget area -->
+
+	<div class="footer-top-area">
+		<div class="zigzag-bottom"></div>
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 col-sm-6">
+					<div class="footer-about-us">
+						<h2>
+							e<span>com</span>
+						</h2>
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+							Perferendis sunt id doloribus vero quam laborum quas alias
+							dolores blanditiis iusto consequatur, modi aliquid eveniet
+							eligendi iure eaque ipsam iste, pariatur omnis sint! Suscipit,
+							debitis, quisquam. Laborum commodi veritatis magni at?</p>
+						<div class="footer-social">
+							<a href="#" target="_blank"><i class="fa fa-facebook"></i></a> <a
+								href="#" target="_blank"><i class="fa fa-twitter"></i></a> <a
+								href="#" target="_blank"><i class="fa fa-youtube"></i></a> <a
+								href="#" target="_blank"><i class="fa fa-linkedin"></i></a>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-3 col-sm-6">
+					<div class="footer-menu">
+						<h2 class="footer-wid-title">User Navigation</h2>
+						<ul>
+							<li><a href="#">My account</a></li>
+							<li><a href="#">Order history</a></li>
+							<li><a href="#">Wishlist</a></li>
+							<li><a href="#">Vendor contact</a></li>
+							<li><a href="#">Front page</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="col-md-3 col-sm-6">
+					<div class="footer-menu">
+						<h2 class="footer-wid-title">Categories</h2>
+						<ul>
+							<li><a href="#">Mobile Phone</a></li>
+							<li><a href="#">Home accesseries</a></li>
+							<li><a href="#">LED TV</a></li>
+							<li><a href="#">Computer</a></li>
+							<li><a href="#">Gadets</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="col-md-3 col-sm-6">
+					<div class="footer-newsletter">
+						<h2 class="footer-wid-title">Newsletter</h2>
+						<p>Sign up to our newsletter and get exclusive deals you wont
+							find anywhere else straight to your inbox!</p>
+						<div class="newsletter-form">
+							<form action="#">
+								<input type="email" placeholder="Type your email"> <input
+									type="submit" value="Subscribe">
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- End footer top area -->
+
+	<div class="footer-bottom-area">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-8">
+					<div class="copyright">
+						<p>
+							&copy; 2015 uCommerce. All Rights Reserved. <a
+								href="http://www.freshdesignweb.com" target="_blank">freshDesignweb.com</a>
+						</p>
+					</div>
+				</div>
+
+				<div class="col-md-4">
+					<div class="footer-card-icon">
+						<i class="fa fa-cc-discover"></i> <i class="fa fa-cc-mastercard"></i>
+						<i class="fa fa-cc-paypal"></i> <i class="fa fa-cc-visa"></i>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>   
     <!-- Latest jQuery form server -->
     <script src="https://code.jquery.com/jquery.min.js"></script>
     

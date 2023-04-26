@@ -61,20 +61,20 @@
 
 <form class="row g-3"  action="saveservice" method="post">
                 <div class="col-12">
-                  <label for="inputNanme4" class="form-label"> Name</label>
-                  <input type="text" class="form-control" id="inputNanme4" name="name">
+                  <label for="inputText" class="form-label"> Name</label>
+                  <input type="text" class="form-control"  name="name">
                 </div>
                 
                  <div class="col-12">
-                  <label for="inputNanme4" class="form-label">Description </label>
-                  <input type="text" class="form-control" id="inputNanme4" name="description">
+                  <label for="inputText" class="form-label">Description </label>
+                  <input type="text" class="form-control"  name="description">
                 </div>
                 
                 
             <div class="col-md-12">
-                  <label for="inputState" class="form-label">Category</label>
+                  <label for="inputText" class="form-label">Category</label>
           
-                  <select id="inputState" class="form-select" name ="CategoryId">
+                  <select id="inputState" class="form-select" name ="categoryId">
                   <option selected="">Choose...</option>
                   <%
 						for(CategoryBean cb : list) {
@@ -107,37 +107,49 @@
                 
                  <div class="col-12">
                   <label for="inputNanme4" class="form-label"> QTY</label>
-                  <input type="text" class="form-control" id="inputNanme4"  name="qty">
+                  <input type="text" class="form-control"   name="qty">
                 </div>
                 
                  <div class="col-12">
                   <label for="inputNanme4" class="form-label"> Price</label>
-                  <input type="text" class="form-control" id="inputNanme4" name="price">
+                  <input type="text" class="form-control"  name="price">
                 </div>
                 
               
                 
-                 <div class="col-12">
-                  <label for="inputNanme4" class="form-label"> MostValuelnd</label>
-                  <input type="text" class="form-control" id="inputNanme4" name="mostValuelnd">
-                </div>
-                
+                           
                  <div class="col-12">
                   <label for="inputNanme4" class="form-label"> BrandName</label>
-                  <input type="text" class="form-control" id="inputNanme4" name="brandName">
+                  <input type="text" class="form-control"  name="brandName">
                 </div>
                 
                  <div class="col-12">
                   <label for="inputNanme4" class="form-label"> ServiceDetailDescriptionURL</label>
-                  <input type="text" class="form-control" id="inputNanme4" name="serviceDetailDescriptionURL">
+                  <input type="text" class="form-control"  name="serviceDetailDescriptionURL">
                 </div>
                 
-                  <div class="form-check">
-                      <label class="form-check-label" for="gridCheck1">TopSellinglnd 
-                      </label>
-                      <input class="form-check-input" type="checkbox" id="gridCheck1" name="topSellinglnd">
-                       
-                    </div>
+                  <div class="row mb-3">
+								<legend class="col-form-label col-sm-2 pt-0">Top Selling</legend>
+								<div class="col-sm-10">
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox"
+											id="gridCheck2" value="true" name="topSellingInd" > <label
+											class="form-check-label" for="gridCheck2">  </label>
+									</div>
+
+								</div>
+							</div>
+                    <div class="row mb-3">
+								<legend class="col-form-label col-sm-2 pt-0">Latest?</legend>
+								<div class="col-sm-10">
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox"
+											id="gridCheck2" value="true" name="latestInd" > <label
+											class="form-check-label" for="gridCheck2">  </label>
+									</div>
+
+								</div>
+							</div>
                     
                  
                 

@@ -5,6 +5,7 @@ import java.util.List;
 
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,6 +37,7 @@ public class ServiceController {
 	
 	
 	
+	
 	@GetMapping("/newservice")
 	public String newService(Model model) {
 		model.addAttribute("list", serviceDao.getAllService());
@@ -43,21 +45,23 @@ public class ServiceController {
 		model.addAttribute("listUser",userDao.getAllUser());
 		model.addAttribute("list",categoryDao.getAllCategory());
 		
-		
-		
-
 		return "NewService";
 	}
 	
 	
 	@PostMapping("/saveservice")
-	public String saveService(ServiceBean ServiceBean) {
-		System.out.println(ServiceBean.getName());
-		System.out.println(ServiceBean.getServiceId());
+	public String saveService(ServiceBean serviceBean) {
+		serviceBean.setMostValueInd(false);
 		
-		//dao 
-		//insert 
-		serviceDao.addService(ServiceBean);
+	if(serviceBean.getLatestInd() == null) {
+				serviceBean.setLatestInd(false);
+			}
+	if(serviceBean.getTopSellingInd()==null) {
+		serviceBean.setTopSellingInd(false);
+	}
+		
+	
+	serviceDao.addService(serviceBean);
 		return "redirect:/listservice";
 		
 		

@@ -101,8 +101,8 @@ public class AdminDao {
 		
 		public List<OrderChartBean> getOrderStats() {
 			
-			String selectQ = "select monthname(orderdate) as month ,sum(totalAmount) as orderAmount from orders group by monthname(orderdate) order by monthname (orderate)";
-			return stmt.query(selectQ, new BeanPropertyRowMapper<OrderChartBean> (OrderChartBean.class));
+			String selectQ = "select month(orderdate) as month , sum(totalAmount) as orderAmount from orders where year(orderDate) = 2023 group by month(orderdate) order by month(orderDate)";
+			return stmt.query(selectQ, new BeanPropertyRowMapper<OrderChartBean>(OrderChartBean.class));
 			
 		}
 		

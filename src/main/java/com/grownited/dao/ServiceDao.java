@@ -19,8 +19,13 @@ public class ServiceDao {
 	//add
 	public void addService(ServiceBean serviceBean) {
 		
-		String insertQuery="insert into service (Name,categoryId,subCategoryId,userId,description,qty,price,topSellinglnd,mostValuelnd,brandName,serviceDetailDescriptionURL,deleted) values(?,?,?,?,?,?,?,?,?,?,?,?)";
-		stmt.update(insertQuery,serviceBean.getName(),serviceBean.getCategoryId(),serviceBean.getSubCategoryId(),serviceBean.getUserId(),serviceBean.getDescription(),serviceBean.getQty(),serviceBean.getPrice(),serviceBean.getTopSellinglnd(),serviceBean.getMostValuelnd(),serviceBean.getBrandName(),serviceBean.getServiceDetailDescriptionURL(),false);
+		String insertQuery="insert into service (Name,categoryId,subCategoryId,userId,description,qty,price,topSellingInd, mostValueInd,brandName,serviceDetailDescriptionURL,deleted,latestInd)" + "values(?,?,?,?,?,?,?,?,?,?,?,false,?)";
+		stmt.update(insertQuery,serviceBean.getName(),serviceBean.getCategoryId(),
+				serviceBean.getSubCategoryId(),serviceBean.getUserId(),
+				serviceBean.getDescription(),serviceBean.getQty(),
+				serviceBean.getPrice(),serviceBean.getTopSellingInd(),
+				serviceBean.getMostValueInd(),serviceBean.getBrandName(),
+				serviceBean.getServiceDetailDescriptionURL(),serviceBean.getLatestInd());
 		
 				//insert//update//delete
 		
@@ -30,7 +35,7 @@ public class ServiceDao {
 	public List<ServiceBean> getAllService() {
 
 		String selectQuery = "select * from service where deleted = false";
-		
+	
 
 
 		List<ServiceBean> list = stmt.query(selectQuery, new BeanPropertyRowMapper<ServiceBean>(ServiceBean.class));
@@ -66,10 +71,17 @@ public class ServiceDao {
 		
 	}
 	
-	//update
+	public List<ServiceBean>getAllLatestServices(){
+		return stmt.query(
+				"select s.*,c.categoryName,sc.subCategoryName from service s,category c, subCategory sc where s.deleted=false and s.categoryId=c.categoryId and s.subCategoryId=sc.subCategoryId and s.latestInd=1 order by s.serviceId desc",
+				new BeanPropertyRowMapper<ServiceBean>(ServiceBean.class));
+	}
 	
-	//delete
-	
+	public List<ServiceBean>getAllTopSellingService(){
+		return stmt.query
+				("select s.*,c.categoryName,sc.subCategoryName from service s,category c,subCategory sc where s.deleted=false and s.categoryId=c.categoryId and s.subCategoryId=sc.subCategoryId and s.topSellingInd=1 order by s.serviceId desc",
+						new BeanPropertyRowMapper<ServiceBean>(ServiceBean.class));
+	}
 	
 
 }

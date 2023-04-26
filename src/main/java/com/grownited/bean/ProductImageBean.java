@@ -1,11 +1,15 @@
 package com.grownited.bean;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class ProductImageBean {
 	Integer productImageId;
 	Integer serviceId;
 	String imageUrl;
 	String Name;
-	boolean deleted;
+	
+	MultipartFile imageFile;
+
 	
 	
 	public String getName() {
@@ -14,12 +18,7 @@ public class ProductImageBean {
 	public void setName(String name) {
 		Name = name;
 	}
-	public boolean isDeleted() {
-		return deleted;
-	}
-	public void setDeleted(boolean deleted) {
-		this.deleted = deleted;
-	}
+	
 	public Integer getProductImageId() {
 		return productImageId;
 	}
@@ -40,6 +39,13 @@ public class ProductImageBean {
 	public void setServiceId(Integer serviceId) {
 		this.serviceId = serviceId;
 	}
+	public MultipartFile getImageFile() {
+		return imageFile;
+	}
+	public void setImageFile(MultipartFile imageFile) {
+		this.imageFile = imageFile;
+	}
+	
 	
 	
 	}

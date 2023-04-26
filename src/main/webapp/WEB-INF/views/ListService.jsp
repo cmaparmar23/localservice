@@ -76,7 +76,7 @@
 									<td><%=sb.getBrandName()%>
 									<td><%=sb.getPrice()%>
 									<td><a class="text-danger"
-										href="deleteService/ServiceId=<%=sb.getServiceId()%>"><i
+										href="deleteService/serviceId=<%=sb.getServiceId()%>"><i
 											class="bi bi-trash"></i> </a> | <a class="text-warning"
 										href="uploadimage?ServiceId=<%=sb.getServiceId()%>"><i
 											class="bi bi-upload"></i> </a></td>
