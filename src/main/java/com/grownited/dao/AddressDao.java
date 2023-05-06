@@ -13,6 +13,7 @@ import com.grownited.bean.AddressBean;
 @Repository
 public class AddressDao {
 	@Autowired
+	static
 	
 	JdbcTemplate stmt;
 	//add
@@ -50,19 +51,12 @@ public class AddressDao {
 	
 	
 	
-	public AddressBean getAddressById(Integer addressId) {
-		AddressBean addressBean = null;
-		try {
-			
-		addressBean = 	stmt.queryForObject("select * from address where addressId = ?",new BeanPropertyRowMapper<AddressBean>(AddressBean.class), new Object[] {addressId});
-			
-		} catch(Exception e) {
-			System.out.println("AddressDao : : getAddressById()");
-			System.out.println(e.getMessage());
-			
-		}
-		return addressBean;
 		
+	
+	public static List<AddressBean> getAllAddressByUser(Integer userId) {
+	
+		return stmt.query("select * from address where userId = ?", new BeanPropertyRowMapper<>(AddressBean.class),
+				new Object[] { userId });
 	}
 	
 	//update

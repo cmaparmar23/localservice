@@ -1,5 +1,6 @@
 package com.grownited.controller;
 import java.io.File;
+
 import java.io.FileWriter;
 
 
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.grownited.bean.ProductImageBean;
+import com.grownited.bean.ServiceBean;
 import com.grownited.dao.ServiceDao;
 import com.grownited.dao.ProductImageDao;
 
@@ -49,15 +51,17 @@ public class ProductImageController {
 		return "redirect:/listproductimage";
 	}
 	@GetMapping("/uploadimage")
-	public String uploadImageForProduct() {
+	public String uploadImageForService() {
 		return "UploadImage";
+		
+		
 		
 	}
 	@PostMapping("/saveimage")
 	public String saveImage(ProductImageBean pb) {
 		System.out.println(pb.getImageFile().getOriginalFilename());
 		System.out.println(pb.getServiceId());
-		  
+		 
 		String mainPath = " C:\\sts\\localService\\src\\main\\resources\\static\\assets\\user\\products";
 		try
 		

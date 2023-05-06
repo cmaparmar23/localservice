@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<title>eComApp | List Service</title>
+<title>| List Service</title>
 <jsp:include page="AllCss.jsp"></jsp:include>
 </head>
 <body>
@@ -70,17 +70,23 @@
 								%>
 								<tr>
 									<td><%=sb.getName()%></td>
-									<td><%=sb.getCategoryId()%>
-									<td><%=sb.getSubCategoryId() %>
-									<td><%=sb.getQty()%>
-									<td><%=sb.getBrandName()%>
-									<td><%=sb.getPrice()%>
-									<td><a class="text-danger"
-										href="deleteService/serviceId=<%=sb.getServiceId()%>"><i
-											class="bi bi-trash"></i> </a> | <a class="text-warning"
-										href="uploadimage?ServiceId=<%=sb.getServiceId()%>"><i
-											class="bi bi-upload"></i> </a></td>
-								</tr>
+									<td><%=sb.getCategoryId()%></td>
+									<td><%=sb.getSubCategoryId() %></td>
+									<td><%=sb.getQty()%></td>
+									<td><%=sb.getBrandName()%></td>
+									<td><%=sb.getPrice()%></td>
+									
+									
+									
+									
+									<td>
+										<a href="deleteservice/<%=sb.getServiceId()%>"><i class="bi bi-trash text-danger"></i> </a> |<a class="text-warning" 
+											href="uploadimage?serviceId=<<%= sb.getServiceId() %>"><i class="bi bi-upload"></i></a></td>
+											
+										
+											
+											
+											</tr>
 								<%
 									}
 								%>

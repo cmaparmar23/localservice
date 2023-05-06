@@ -11,9 +11,25 @@ public class ServiceBean {
 	private Boolean mostValueInd;
 	private String brandName;
 	private String serviceDetailDescriptionURL;
-	private boolean deleted;
+	private Boolean deleted;
 	private Boolean latestInd;
 	private Boolean topSellingInd;
+	
+	private String categoryName;
+	private String subCategoryName;
+	
+	public String getCategoryName() {
+		return categoryName;
+	}
+	public void setCategoryName(String categoryName) {
+		this.categoryName = categoryName;
+	}
+	public String getSubCategoryName() {
+		return subCategoryName;
+	}
+	public void setSubCategoryName(String subCategoryName) {
+		this.subCategoryName = subCategoryName;
+	}
 	public Integer getServiceId() {
 		return serviceId;
 	}
@@ -80,10 +96,11 @@ public class ServiceBean {
 	public void setServiceDetailDescriptionURL(String serviceDetailDescriptionURL) {
 		this.serviceDetailDescriptionURL = serviceDetailDescriptionURL;
 	}
-	public boolean isDeleted() {
+	
+	public Boolean getDeleted() {
 		return deleted;
 	}
-	public void setDeleted(boolean deleted) {
+	public void setDeleted(Boolean deleted) {
 		this.deleted = deleted;
 	}
 	public Boolean getLatestInd() {

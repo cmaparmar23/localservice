@@ -78,8 +78,10 @@ String selectQuery = "select * from cart where deleted = false";
 	
 	
 	//list
-	
-	
+	public List<CartBean> myCart(Integer userId) {
+		return stmt.query("select s.serviceId,s.price,s.name,c.qty,c.cartId from service s ,cart c where c.userId = ? and c.serviceId = s.serviceId", new BeanPropertyRowMapper<>(CartBean.class),new Object[] {userId } );
+	}
+		
 
 		
 	}

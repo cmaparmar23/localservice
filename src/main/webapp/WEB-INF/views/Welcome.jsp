@@ -113,8 +113,8 @@
                         <li class="active"><a href="index.html">Home</a></li>
                         <li><a href="shop.html">Shop page</a></li>
                         <li><a href="single-product.html">Single product</a></li>
-                        <li><a href="addtocart">Cart</a></li>
-                        <li><a href="checkout.html">Checkout</a></li>
+                        <li><a href="mycart">Cart</a></li>
+                        <li><a href="myaddress">My Address</a></li>
                         <li><a href="#">Category</a></li>
                         <li><a href="#">Others</a></li>
                         <li><a href="#">Contact</a></li>
@@ -140,9 +140,12 @@
 							</h2>
 							<h4 class="caption subtitle">Base Stand</h4>
 							<a class="caption button-radius" href="#"><span class="icon"></span>Service now</a>
+							
+							
 						</div>
 					</li>
 					<li><img src="assets/user/products/7/p1.jpg" alt="Slide">
+					
 						<div class="caption-group">
 							<h2 class="caption title">
 								Commerical <span class="primary">Plumbers <strong></strong></span>
@@ -228,8 +231,8 @@
                                 <div class="product-f-image">
                                     <img src="assets/user/products/<%=serviceBean.getServiceId()%>/main.jpg" alt="">
                                     <div class="product-hover">
-                                        <a href="" class=add-to-cart-link><i class="fa fa-shopping-cart"></i> Add to cart</a>
-                                        <a href=""class="view-details-link"><i class="fa fa-link"></i> See details</a>
+                                        <a href="addtocart?serviceId<%= serviceBean.getServiceId() %>" class=add-to-cart-link><i class="fa fa-shopping-cart"></i> Add to cart</a>
+                                        <a href="seedetails?serviceId=<%=serviceBean.getServiceId()%>"class="view-details-link"><i class="fa fa-link"></i> See details</a>
                                     </div>
                                 </div>
                                 
@@ -269,12 +272,11 @@
 										src="assets/users/products/<%=serviceBean.getServiceId() %>/main.jpg"
 										alt="">
 									<div class="product-hover">
-										<a href=""
+										<a href="addtocart?serviceId<%= serviceBean.getServiceId() %>"
 											class="add-to-cart-link"><i class="fa fa-shopping-cart"></i>
-											Add to cart</a> <a
-											href=""
-											class="view-details-link"><i class="fa fa-link"></i> See
-											details</a>
+											Add to cart</a> 
+											<a href="seedetails?serviceId=<%=serviceBean.getServiceId()%>"class="view-details-link"><i class="fa fa-link"></i> See details</a>
+											
 									</div>
 								</div>
 
@@ -396,6 +398,7 @@
 							<a href="single-product.html"><img
 								src="assets/users/img/product-thumb-2.jpg" alt=""
 								class="product-thumb"></a>
+							
 							<h2>
 								<a href="single-product.html">Samsung gallaxy note 4</a>
 							</h2>
@@ -480,7 +483,8 @@
 				<div class="col-md-3 col-sm-6">
 					<div class="footer-about-us">
 						<h2>
-							e<span>com</span>
+							<span>Local Service
+							]</span>
 						</h2>
 						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.
 							Perferendis sunt id doloribus vero quam laborum quas alias
@@ -502,9 +506,9 @@
 						<ul>
 							<li><a href="#">My account</a></li>
 							<li><a href="#">Order history</a></li>
-							<li><a href="#">Wishlist</a></li>
+							<li><a href="#">Adress</a></li>
 							<li><a href="#">Vendor contact</a></li>
-							<li><a href="#">Front page</a></li>
+							<li><a href="#">Contact No</a></li>
 						</ul>
 					</div>
 				</div>
@@ -513,11 +517,11 @@
 					<div class="footer-menu">
 						<h2 class="footer-wid-title">Categories</h2>
 						<ul>
-							<li><a href="#">Mobile Phone</a></li>
-							<li><a href="#">Home accesseries</a></li>
-							<li><a href="#">LED TV</a></li>
-							<li><a href="#">Computer</a></li>
-							<li><a href="#">Gadets</a></li>
+							<li><a href="#">Electician Service</a></li>
+							<li><a href="#">Plumber</a></li>
+							<li><a href="#">Doctor</a></li>
+							<li><a href="#">Teacher</a></li>
+							<li><a href="#">Health Care</a></li>
 						</ul>
 					</div>
 				</div>

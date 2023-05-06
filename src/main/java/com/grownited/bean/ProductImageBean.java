@@ -6,19 +6,19 @@ public class ProductImageBean {
 	Integer productImageId;
 	Integer serviceId;
 	String imageUrl;
-	String Name;
+	String name;
 	
 	MultipartFile imageFile;
 
 	
 	
+	
 	public String getName() {
-		return Name;
+		return name;
 	}
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
 	}
-	
 	public Integer getProductImageId() {
 		return productImageId;
 	}

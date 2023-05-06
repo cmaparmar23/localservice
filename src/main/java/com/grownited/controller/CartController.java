@@ -80,24 +80,42 @@ public class CartController {
 	model.addAttribute("cartBean",cartBean);
 	return "ViewCart";
 }
-@GetMapping("/addtocart")
-public String addtocart(@RequestParam("serviceId") Integer serviceId,HttpSession session, HttpServletRequest request) {
+	@GetMapping("/addtocart")
+	public String addToCart(@RequestParam("serviceId") Integer serviceId, HttpSession session,
+			HttpServletRequest request) {
+		String ref = request.getHeader("referer");
+		String backUrl = ref.substring(22);
+		if (backUrl.length() == 0) {
+			backUrl = "welcome";
+
+		}
+		Integer userId = -1;
+		CartBean cart = new CartBean();
+		UserBean user = (UserBean) session.getAttribute("user");
+		userId = user.getUserId();
+		cart.setServiceId(serviceId);
+		cart.setQty(1);
+		cart.setUserId(userId);
+		cartDao.addToCart(cart);
+		return "redirect:/" + backUrl;
+	}
 	
 	
-	Integer userId =-1;
-	CartBean cart = new CartBean();
-	UserBean user = (UserBean) session.getAttribute("user");
-	userId = user.getUserId();
-	
-	System.out.println("REferer => "+request.getHeader("refer"));
-	cart.setServiceId(serviceId);
-	cart.setQty(1);
-	cart.setUserId(userId);
-	return "";
-}
+	@GetMapping("/mycart")
+	public String mycart(HttpSession session,Model model) {
+		UserBean user = (UserBean) session.getAttribute("user");
+
+		List<CartBean> mycart = cartDao.myCart(user.getUserId());
+		
+		model.addAttribute("mycart",mycart);
+		return "MyCart";
+	}
+	}
+
+
 	
 
-}
+
 
 	
 	

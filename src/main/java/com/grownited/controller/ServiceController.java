@@ -77,10 +77,10 @@ public class ServiceController {
 	
 
 	@GetMapping("/deleteservice/{serviceId}")
-	public String deleteService(@PathVariable("serviceId")Integer serviceId) {
-		//12 45
+	public String deleteService(@PathVariable("serviceId") Integer serviceId) {
 		serviceDao.deleteService(serviceId);
-		return "redirect:/listservice"; //
+		
+		return "redirect:/listservice";
 	}
 	@GetMapping("/viewservice/{serviceId}")
 

@@ -75,7 +75,7 @@
 											</div>
 										</td>
 										<td>
-										<a href="deletesubcategory/<%=cb.getCategoryId()%>"><i class="bi bi-trash text-danger"></i> </a> |<a
+										<a href="deletecategory/<%=cb.getCategoryId()%>"><i class="bi bi-trash text-danger"></i> </a> |<a
 											href="viewcategory?categoryId=<%=cb.getCategoryId()%>"><i class="bi bi-eye"></i>   </a>
 											|
 											

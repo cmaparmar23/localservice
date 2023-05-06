@@ -2,7 +2,7 @@ package com.grownited.controller;
 
 import java.util.List;
 
-
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import com.grownited.bean.CategoryBean;
 import com.grownited.bean.AddressBean;
 import com.grownited.bean.SubCategoryBean;
+import com.grownited.bean.UserBean;
 import com.grownited.dao.CategoryDao;
 import com.grownited.dao.UserDao;
 import com.grownited.dao.AddressDao;
@@ -36,29 +37,15 @@ public class AddressController {
 	}
 	
 	
+		
+		
+	
+	
 	@PostMapping("/saveaddress")
-	public String saveAddress(AddressBean AddressBean) {
-	
-		System.out.println(AddressBean.getAddressLine());
-		System.out.println(AddressBean.getLandMark());
-		System.out.println(AddressBean.getPincode());
-		System.out.println(AddressBean.getState());
-		System.out.println(AddressBean.getCity());
-		System.out.println(AddressBean.getUserId());
-		
-				
-				//dao 
-		
-		
-		//dao 
-		//insert 
-		addressDao.addAddress(AddressBean);
-		return "redirect:/listaddress";
-		
-		
-	
+	public String saveAddress(AddressBean address) {
+		addressDao.addAddress(address);	
+		return "redirect:/myaddress";
 	}
-
 	@GetMapping("/listaddress")
 	public String listAddress(Model model) {
 		List<AddressBean> listAddress = addressDao.getAllAddress();
@@ -83,10 +70,27 @@ public class AddressController {
 	
 
 }
+	
+
+	@GetMapping("/myaddress")
+	public String myAddress(Model model,HttpSession session) {
+		UserBean user = (UserBean) session.getAttribute("user");
+		Integer userId = user.getUserId();
+		
+		List<AddressBean> address = addressDao.getAllAddressByUser(userId);
+		model.addAttribute("address",address);
+		return "MyAddress";
+	
+	
+	
+
+}
 
 	
 	
 	
 	
-
+	
+	
+	
 }

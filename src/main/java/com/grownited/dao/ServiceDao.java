@@ -32,6 +32,19 @@ public class ServiceDao {
 		
 		
 	}
+	
+	
+	public ServiceBean getServiceBy(Integer serviceId) {
+		return stmt.queryForObject("select s.*,c.CategoryName,sc.subCategoryName from service s,category c, subcategory sc  where s.categoryId  and  s.subcategoryId = sc.subcategoryId and serviceId = ?",
+				new BeanPropertyRowMapper<ServiceBean>(ServiceBean.class), new Object[] { serviceId });
+	}
+	
+	
+	
+	
+	
+	
+	
 	public List<ServiceBean> getAllService() {
 
 		String selectQuery = "select * from service where deleted = false";
@@ -44,12 +57,7 @@ public class ServiceDao {
 		
 		return list;
 	}
-	public void deleteService(Integer serviceId) {
-		// TODO Auto-generated method stub
-		String updateQuery=  "delete from service where serviceId=?" ;
-		stmt.update(updateQuery,serviceId);
-		
-	}
+	
 	
 	
 	//list
@@ -82,6 +90,10 @@ public class ServiceDao {
 				("select s.*,c.categoryName,sc.subCategoryName from service s,category c,subCategory sc where s.deleted=false and s.categoryId=c.categoryId and s.subCategoryId=sc.subCategoryId and s.topSellingInd=1 order by s.serviceId desc",
 						new BeanPropertyRowMapper<ServiceBean>(ServiceBean.class));
 	}
+	public void deleteService(Integer serviceId) {
+		stmt.update("update service set deleted = true where serviceId = ?",serviceId);
+	}
 	
+
 
 }
